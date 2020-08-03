@@ -328,8 +328,6 @@ h2,
 h3,
 h4,
 p,
-ul[class],
-ol[class],
 li,
 figure,
 figcaption,
@@ -506,7 +504,6 @@ select {
 .section__title {
   font-size: 48px;
   font-weight: bold;
-  margin-bottom: 60px;
   text-align: center;
   text-transform: uppercase;
   color: #000; }
@@ -585,5 +582,86 @@ body {
     position: absolute;
     bottom: -150px;
     left: 0; }
+
+.reviews__display {
+  padding: 50px 45px 34px;
+  background: #f8faf9 url("../img/decor/drown-berries.png") right top no-repeat;
+  overflow: hidden;
+  position: relative; }
+  .reviews__display::before {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 90px;
+    background: white;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -65px; }
+
+.reviews__display-iiner {
+  display: flex; }
+
+.reviews__avatar {
+  width: 254px;
+  height: 260px; }
+
+.reviews__avatar-img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%; }
+
+.reviews__content {
+  flex: 1;
+  margin-left: 20px; }
+
+.reviews__title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 22px;
+  color: #000; }
+
+.reviews__text {
+  margin-bottom: 36px;
+  width: 85%; }
+
+.reviews__author {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000; }
+
+.reviews__swither {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px !important; }
+
+.interactive-avatar {
+  width: 80px;
+  height: 80px;
+  border-right: 6px solid transparent;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative; }
+  .interactive-avatar--active {
+    border-color: #0b4d3c; }
+
+.interactive-avatar__link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: block; }
+
+.interactive-avatar__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; }
 
 /*# sourceMappingURL=main.css.map */
