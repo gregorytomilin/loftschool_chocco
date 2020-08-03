@@ -1,0 +1,34 @@
+.benefits{
+  display: flex;
+
+}
+
+.benefits__item{
+  flex: 1;
+  padding: 0 3%;
+  position: relative;
+
+  &:before{
+    content: url("../img/decor/separator.svg");
+    position: absolute;
+    top: 30px;
+    right: 0;
+    -webkit-transform: translateX(50%);
+    -moz-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+    -o-transform: translateX(50%);
+    transform: translateX(50%);
+  }
+
+  &:first-child{
+    padding-left: 0;
+
+  }
+
+  &:last-child{
+    padding-right: 0;
+    &::before{
+      display: none;
+    }
+  }
+}

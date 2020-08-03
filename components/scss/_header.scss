@@ -1,0 +1,42 @@
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+.menu {
+  max-width: 657px;
+  width: 100%;
+}
+.menu__list{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu__link{
+  text-decoration: none;
+  color: white;
+}
+
+.menu__item{
+  margin-right: 18px;
+  &:last-child{
+    margin-right: 0;
+  }
+}
+
+.phone-number {
+  font-size: 24px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.phone-number__icon-elem{
+  width: 12px;
+  height: 12px;
+  fill: white;
+  margin-right: 6px;
+}

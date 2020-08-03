@@ -1,0 +1,17 @@
+body{
+  font-size: $baseFontSize;
+  font-family: "Alegreya Sans", Arial, Helvetica, sans-serif;
+  line-height: 1.42;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  color: #666666;
+}
+
+.wrapper{
+  position: relative;
+  width: 100%;
+  min-width: $containerWidth + 20px;
+  min-height: 100%;
+  overflow: hidden;
+}
