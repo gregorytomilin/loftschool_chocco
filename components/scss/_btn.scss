@@ -31,6 +31,16 @@
     }
   }
 
+  &--theme--white{
+    background: white;
+    color: $darkGreen;
+
+    &:hover{
+      color: white;
+      background: $darkGreen;
+    }
+  }
+
   &:focus{
     outline: none;
     border: none;
