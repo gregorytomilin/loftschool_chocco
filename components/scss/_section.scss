@@ -4,6 +4,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  &--font-color--green{
+    color:$darkGreen;
+
+    .section__title{
+      color: inherit;
+      margin-bottom: 59px;
+    }
+  }
 }
 
 .section__title{
@@ -13,4 +22,8 @@
   text-align: center;
   text-transform: uppercase;
   color: #000;
+
+  &--feedbacks{
+    margin-bottom: 32px;
+  }
 }

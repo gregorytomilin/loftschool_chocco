@@ -4,10 +4,12 @@ $baseFontSize : 18px;
   max-width: $containerWidth;
   margin: 0 auto;
   position: relative;
+  width: 100%;
 }
 
 $blue : #61C4D9;
 $darkGreen : #0b4d3c;
+$z-fixed-menu : 100;
 
 //normalize
 
@@ -26,9 +28,17 @@ $darkGreen : #0b4d3c;
 @import "scss/benefits-section";
 @import "scss/reviews";
 @import "scss/interactive-avatar";
+@import "scss/order-section";
+@import "scss/form";
+@import "scss/radio";
+@import "scss/fixed-menu";
 
 
 
 
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,300;0,400;0,500;0,800;1,100;1,300;1,400;1,500;1,700&display=swap');
+
+body{
+  font-family: "Alegreya Sans";
+}
 

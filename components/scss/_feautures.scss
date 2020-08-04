@@ -1,10 +1,20 @@
 .features{
   display: flex;
+  width: 46%;
 }
 
 .feature__item{
   margin-right: 46px;
   &:last-child{
     margin-right: 0;
+  }
+}
+
+.feature__icon{
+  width: 40px;
+  height: 40px;
+  img{
+    width: 40px;
+    height: 40px;
   }
 }
