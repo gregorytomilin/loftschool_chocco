@@ -498,8 +498,8 @@ select {
     background: white;
     color: #0b4d3c; }
     .btn--theme--white:hover {
-      color: white;
-      background: #0b4d3c; }
+      background: #0b4d3c;
+      color: white; }
   .btn:focus {
     outline: none;
     border: none; }
