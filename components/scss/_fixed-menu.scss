@@ -1,7 +1,8 @@
 .fixed-menu{
   position: fixed;
-  top: 20%;
+  top: 50%;
   right: 3%;
+  margin-top: -95px;
   z-index: $z-fixed-menu;
 }
 

@@ -41,3 +41,11 @@
   fill: white;
   margin-right: 6px;
 }
+
+.contacts__phone--green svg{
+  fill: $darkGreen !important;
+}
+
+.contacts__phone--green .phone-number {
+  color: $darkGreen ;
+}
