@@ -3,32 +3,51 @@
   align-items: center;
   justify-content: space-between;
   color: white;
+
+  @include tablets {
+
+  }
 }
+.phone-number.header__phone-number{
+  @include tablets {
+    display: none;
+  }
+
+}
+
 .menu {
-  max-width: 657px;
+  max-width: rem(657px);
   width: 100%;
+  margin: 0 30px;
+
+  @include tablets {
+    display: none;
+  }
 }
 .menu__list{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin: 0;
+  flex-wrap: wrap;
+
 }
 
 .menu__link{
   text-decoration: none;
   color: white;
+  white-space: nowrap;
 }
 
 .menu__item{
-  margin-right: 18px;
+  margin-right: rem(18px);
   &:last-child{
     margin-right: 0;
   }
 }
 
 .phone-number {
-  font-size: 24px;
+  font-size: rem(24px);
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -36,10 +55,15 @@
 }
 
 .phone-number__icon-elem{
-  width: 12px;
-  height: 12px;
+  width: rem(12px);
+  height: rem(12px);
   fill: white;
-  margin-right: 6px;
+  margin-right: rem(6px);
+}
+
+.phone-number__text {
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .contacts__phone--green svg{

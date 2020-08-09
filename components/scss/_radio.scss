@@ -4,7 +4,7 @@
   user-select: none;
 
   &--checkbox{
-    margin-bottom: 46px;
+    margin-bottom: rem(46px);
     .radio__visible{
       -webkit-border-radius: 0;
       -moz-border-radius: 0;
@@ -20,8 +20,8 @@
   }
 
   &__title{
-    margin-bottom: 19px;
-    margin-right: 23px;
+    margin-bottom: rem(19px);
+    margin-right: rem(23px);
 
   }
 }
@@ -39,9 +39,9 @@
 }
 
 .radio__visible{
-  margin-right: 10px;
-  width: 26px;
-  height: 26px;
+  margin-right: rem(10px);
+  width: rem(26px);
+  height: rem(26px);
   position: relative;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -51,8 +51,8 @@
   &:before{
     content: "";
     display: none;
-    width: 14px;
-    height: 14px;
+    width: rem(14px);
+    height: rem(14px);
     background: #365a49;
     position: absolute;
     -webkit-border-radius: 50%;

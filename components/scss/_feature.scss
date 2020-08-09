@@ -1,14 +1,14 @@
 .feature{
   display: flex;
-  min-width: 85px;
+  min-width: rem(85px);
   align-items: center;
 }
 .feature__icon{
-  width: 45px;
-  margin-right: 7px;
+  width: rem(45px);
+  margin-right: rem(7px);
 }
 
 .feature__text{
-  font-size: 16px;
-  width: 80px;
+  font-size: rem(16px);
+  width: rem(80px);
 }

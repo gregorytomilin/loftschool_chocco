@@ -3,8 +3,8 @@
 
 .benefit__image-wrapper {
   display: inline-block;
-  width: 126px;
-  height: 126px;
+  width: rem(126px);
+  height: rem(126px);
   position: relative;
   background: #f2f5f4;
   -webkit-border-radius: 50%;
@@ -13,8 +13,8 @@
   overflow: hidden; }
 
 .benefit__icon {
-  width: 75px;
-  height: 69px;
+  width: rem(75px);
+  height: rem(69px);
   position: absolute;
   top: 50%;
   left: 50%;

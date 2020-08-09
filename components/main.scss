@@ -1,17 +1,17 @@
 $containerWidth : 940px;
 $baseFontSize : 18px;
-.container{
-  max-width: $containerWidth;
-  margin: 0 auto;
-  position: relative;
-  width: 100%;
-}
+
+//breackpoints
+
+$tablets: 768px;
+$phones: 480px;
 
 $blue : #61C4D9;
 $darkGreen : #0b4d3c;
 $z-fixed-menu : 100;
 
 //normalize
+@import "scss/media";
 
 @import "scss/normalize";
 @import "scss/reset";
@@ -33,6 +33,7 @@ $z-fixed-menu : 100;
 @import "scss/radio";
 @import "scss/fixed-menu";
 @import "scss/contacts";
+@import "scss/hamburger";
 
 
 
