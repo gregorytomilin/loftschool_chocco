@@ -61,9 +61,18 @@
   margin-right: rem(6px);
 }
 
+.phone-icon{
+  width: 20px;
+  height: 20px;
+  fill: white;
+  margin-right: 5px;
+}
+
 .phone-number__text {
   white-space: nowrap;
   flex-shrink: 0;
+
+
 }
 
 .contacts__phone--green svg{
@@ -71,5 +80,13 @@
 }
 
 .contacts__phone--green .phone-number {
-  color: $darkGreen ;
+   color: $darkGreen ;
+
+  @include phones{
+
+    display: flex;
+    justify-content: center;
+
+  }
+
 }

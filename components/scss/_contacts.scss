@@ -55,4 +55,10 @@ footer{
 .contacts-footer{
     display: flex;
     justify-content: space-between;
+
+    @include phones {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
   }

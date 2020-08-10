@@ -11,10 +11,11 @@ $darkGreen : #0b4d3c;
 $z-fixed-menu : 100;
 
 //normalize
-@import "scss/media";
+
 
 @import "scss/normalize";
 @import "scss/reset";
+@import "scss/media";
 @import "scss/hero";
 @import "scss/header";
 @import "scss/headline";

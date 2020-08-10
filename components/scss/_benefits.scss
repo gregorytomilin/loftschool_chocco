@@ -13,7 +13,10 @@
   position: relative;
 
   @include phones {
+    display: flex;
     flex-direction: row;
+    padding: 0;
+    margin-bottom: 1rem;
     &:before, &:after {
       display: none;
     }
@@ -42,4 +45,11 @@
       display: none;
     }
   }
+}
+
+.benefit__text{
+  @include phones {
+    text-align: left;
+  }
+
 }

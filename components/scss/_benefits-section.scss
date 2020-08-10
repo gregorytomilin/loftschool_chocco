@@ -2,10 +2,25 @@
   position: relative;
   background: url("../img/decor/side-leaf.png") left top 57% no-repeat;
 
+  @include phones {
+    background: none;
+  }
+
   &::before{
     content: url("../img/decor/bars-and-berries.png");
     position: absolute;
     bottom: rem(-150px);
     left: 0;
+
+    @include phones{
+      width: 20%;
+      height: 20%;
+    }
+  }
+}
+
+.benefit {
+  @include phones {
+    font-size: 14px;
   }
 }

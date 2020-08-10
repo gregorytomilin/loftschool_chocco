@@ -17,6 +17,10 @@
 
       }
     }
+
+    @include phones{
+      margin-bottom: 1rem;
+    }
   }
 
   &__title{

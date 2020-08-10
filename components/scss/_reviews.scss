@@ -34,6 +34,11 @@
 .reviews__avatar{
   width: rem(254px);
   height: rem(260px);
+
+  @include phones{
+    width: 5rem;
+    height: 5rem;
+  }
 }
 
 .reviews__avatar-img{
@@ -67,6 +72,9 @@
   @include tablets {
     width: auto;
     margin: 0;
+  }
+  @include phones {
+    font-size: 14px;
   }
 }
 .reviews__author{
