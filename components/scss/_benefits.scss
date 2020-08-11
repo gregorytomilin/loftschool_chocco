@@ -49,6 +49,7 @@
 
 .benefit__text{
   @include phones {
+    font-size: 1rem;
     text-align: left;
   }
 
