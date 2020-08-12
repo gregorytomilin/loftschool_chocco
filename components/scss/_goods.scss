@@ -1,0 +1,13 @@
+.goods-section{
+    background: #F8FAF9 url() right 0  bottom -50px no-repeat;
+    color: #000;
+    position: relative;
+
+
+    &::before{
+        position: absolute;
+        bottom: -10rem;
+        right: 0;
+        content: url("../img/decor/big-leaf-green.svg");
+    }
+}

@@ -22,6 +22,7 @@ body{
   -moz-osx-font-smoothing: grayscale;
   position: relative;
   color: #666666;
+
 }
 
 .wrapper{
@@ -36,4 +37,8 @@ body{
   max-width: $containerWidth;
   margin: 0 auto;
   position: relative;
+
+  @include tablets{
+    position: static;
+  }
 }

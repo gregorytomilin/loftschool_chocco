@@ -10,6 +10,7 @@
   text-decoration: none;
   display: inline-block;
   border: none;
+  cursor: pointer;
 
   &--theme--transparent{
     background: transparent;
@@ -24,6 +25,7 @@
   &--theme--green{
     background: $darkGreen;
     color: white;
+
 
     &:hover{
       color: $darkGreen;

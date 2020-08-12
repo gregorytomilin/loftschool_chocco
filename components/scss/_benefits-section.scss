@@ -1,6 +1,7 @@
 .benefits-section{
   position: relative;
   background: url("../img/decor/side-leaf.png") left top 57% no-repeat;
+  z-index: 2;
 
   @include phones {
     background: none;
@@ -13,8 +14,7 @@
     left: 0;
 
     @include phones{
-      width: 20%;
-      height: 20%;
+      display: none;
     }
   }
 }

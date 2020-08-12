@@ -1,4 +1,8 @@
 .hamburger{
+  z-index: 99;
+  position: fixed;
+  top: 30px;
+  right: 30px;
   width: 24px;
   height: 20px;
   flex-direction: column;

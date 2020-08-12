@@ -1,4 +1,5 @@
 .header{
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -15,13 +16,52 @@
 
 }
 
+
+
 .menu {
   max-width: rem(657px);
   width: 100%;
   margin: 0 30px;
+  visibility: visible;
+  opacity: 1;
+  &.hidden{
+    visibility: visible;
+    opacity: 1;
+  }
 
   @include tablets {
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    z-index: 101;
+    height: 100vh;
+    width: 100vw;
+    margin: auto;
+    max-width: 100%;
+    top: 0;
+    left: 0;
+    background: rgb(54, 54, 54);
+    transition: all ease 200ms;
+    &.hidden{
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+
+  &__closeBTn {
     display: none;
+    fill: aliceblue;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+
+    @include tablets {
+      display: flex;
+    }
   }
 }
 .menu__list{
@@ -31,18 +71,31 @@
   margin: 0;
   flex-wrap: wrap;
 
+  @include tablets{
+    flex-direction: column;
+    margin: 0 auto !important;
+  }
+
 }
 
 .menu__link{
   text-decoration: none;
   color: white;
   white-space: nowrap;
+
+  @include tablets{
+    font-size: 1.8rem;
+  }
 }
 
 .menu__item{
   margin-right: rem(18px);
   &:last-child{
     margin-right: 0;
+  }
+
+  @include tablets{
+    margin: 0 0 1rem;
   }
 }
 
@@ -89,4 +142,15 @@
 
   }
 
+}
+
+
+.visible{
+  visibility: visible;
+  opacity: 1;
+}
+
+.hidden{
+  visibility: hidden;
+  opacity: 0;
 }
