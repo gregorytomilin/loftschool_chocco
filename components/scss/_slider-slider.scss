@@ -21,6 +21,7 @@
 
   &__left {
     position: absolute;
+    z-index: 100;
     fill: transparent;
     width: 30px;
     height: 30px;
@@ -31,6 +32,8 @@
 
   &__right {
     transform: rotate(180deg);
+    z-index: 100;
+
     position: absolute;
     fill: transparent;
     width: 30px;
