@@ -2,13 +2,13 @@ let $hamburgerMenuBtn = document.querySelector('.hamburger');
 let $closeMenuBtn = document.querySelector('.menu__closeBTn');
 let $menu = document.querySelector('.menu');
 
-$hamburgerMenuBtn.addEventListener('click', (e)=>{
+$hamburgerMenuBtn.addEventListener('click', (e) => {
     e.preventDefault();
     $menu.classList.add('visible')
 
 })
 
-$closeMenuBtn.addEventListener('click', (e)=>{
+$closeMenuBtn.addEventListener('click', (e) => {
     e.preventDefault();
     $menu.classList.remove('visible')
 
@@ -26,15 +26,9 @@ const arrowsLeft = document.querySelector('.slider__left');
 
 
 const slideWidth = document.querySelector('.slider__item');
-const rootSlider = document.getElementById('sliderRoot');
+const rootSlider = document.querySelector('#sliderRoot');
 const sliderList = document.querySelector('.slider__list');
-
-console.log(rootSlider.scrollWidth);
-console.log(sliderList.scrollWidth);
-console.log(sliderList.clientWidth);
-
-
-let sliderPosition = 0;
+const sliderItem = document.querySelectorAll('.slider__item');
 
 
 
@@ -47,26 +41,46 @@ arrowsLeft.addEventListener('click', () => moveLeft());
 // sliderList.addEventListener('swiped-right', ()=> moveLeft());
 // sliderList.addEventListener('swiped-left', ()=> moveRight());
 
+let sliderPosition = 0;
+
+let slideStep = sliderList.offsetWidth;
+let maxTranslate = slideStep * sliderItem.length;
+
+
+window.addEventListener('resize', ()=>{
+    console.log('Изменён размер документа')
+
+    rootSlider.style.transform = `translate(0px)`;
+    slideStep = sliderList.offsetWidth;
+    maxTranslate = slideStep * sliderItem.length;
+
+    console.log(slideStep);
+    console.log(maxTranslate);
+})
+
+
 
 function moveRight() {
-    sliderPosition+= slideWidth.clientWidth;
-    console.log(sliderPosition);
 
+    sliderPosition += slideStep;
 
-    if (sliderPosition === sliderList.scrollWidth){
+    if (sliderPosition === maxTranslate) {
         sliderPosition = 0;
     }
+
     rootSlider.style.transform = `translate(-${sliderPosition}px)`;
 }
 
 function moveLeft() {
-    console.log(sliderPosition);
 
-    if (sliderPosition === 0){
-        sliderPosition = sliderList.scrollWidth - slideWidth.clientWidth;
-    }else{
-        sliderPosition -= slideWidth.clientWidth;
+
+    sliderPosition -= slideStep;
+
+    if (sliderPosition < 0) {
+        sliderPosition = maxTranslate - slideStep;
     }
+
+
     rootSlider.style.transform = `translate(-${sliderPosition}px)`;
 }
 
