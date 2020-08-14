@@ -15,33 +15,6 @@
 
     }
 
-    &__smm{
-        display: flex;
-
-        img:not(:last-of-type){
-            margin-right: rem(10px);
-
-        }
-
-        img{
-            margin-right: rem(10px);
-            &:last-child{
-                margin: 0;
-            }
-        }
-
-        &-icon{
-            fill: #979797;
-            width: 20px;
-            height: 20px;
-            margin-left: 14px;
-
-            &:hover{
-                fill: #474747;
-            }
-        }
-
-    }
 
     &__address{
         color: #292929;

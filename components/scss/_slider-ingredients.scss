@@ -43,13 +43,18 @@
 
   &__items-list{
     position: absolute;
-    width: 75%;
+    width: 239px;
+    left: 120px;
     left: 120px;
     background: rgba(196, 196, 196, 1);
     padding: 1rem;
     opacity: 0;
     flex-grow: 1;
     transition: opacity ease .2s;
+  }
+
+  &__items-list:hover{
+    opacity: 1;
   }
 
   &__item {
