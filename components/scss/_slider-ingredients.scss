@@ -14,7 +14,8 @@
   &:hover {
     background: #2f91a7;
   }
-  &:hover ~ .ingredients__items-list{
+  &:hover .ingredients__items-list{
+    visibility: visible;
     opacity: 1;
   }
 
@@ -49,12 +50,12 @@
     background: rgba(196, 196, 196, 1);
     padding: 1rem;
     opacity: 0;
+    visibility: hidden;
     flex-grow: 1;
     transition: opacity ease .2s;
   }
 
   &__items-list:hover{
-    opacity: 1;
   }
 
   &__item {
