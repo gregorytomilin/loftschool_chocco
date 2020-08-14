@@ -14,7 +14,7 @@
   &:hover {
     background: #2f91a7;
   }
-  &:hover + .ingredients__items-list{
+  &:hover ~ .ingredients__items-list{
     opacity: 1;
   }
 
@@ -44,7 +44,7 @@
   &__items-list{
     position: absolute;
     width: 239px;
-    left: 120px;
+    top: 0;
     left: 120px;
     background: rgba(196, 196, 196, 1);
     padding: 1rem;
