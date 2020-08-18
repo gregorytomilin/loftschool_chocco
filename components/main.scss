@@ -36,6 +36,7 @@ $z-fixed-menu : 100;
 @import "scss/contacts";
 @import "scss/hamburger";
 @import "scss/smm-links";
+@import "scss/team-list";
 
 @import "scss/goods";
 
@@ -53,5 +54,6 @@ $z-fixed-menu : 100;
 
 body{
   font-family: "Alegreya Sans";
+  position: relative;
 }
 

@@ -1,3 +1,6 @@
+// Модальное окно
+
+
 let $hamburgerMenuBtn = document.querySelector('.hamburger');
 let $closeMenuBtn = document.querySelector('.menu__closeBTn');
 let $menu = document.querySelector('.menu');
@@ -5,21 +8,23 @@ let $menu = document.querySelector('.menu');
 $hamburgerMenuBtn.addEventListener('click', (e) => {
     e.preventDefault();
     $menu.classList.add('visible')
+    document.body.style.overflow = 'hidden';
 
 })
 
 $closeMenuBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    $menu.classList.remove('visible')
-
+    $menu.classList.remove('visible');
+    document.body.style.overflow = 'visible';
 })
 
+// END Модальное окно
 
 
 
 
 
-// ************************  Слайдер товаров
+// Слайдер товаров
 
 const arrowsRight = document.querySelector('.slider__right');
 const arrowsLeft = document.querySelector('.slider__left');
@@ -47,15 +52,12 @@ let slideStep = sliderList.offsetWidth;
 let maxTranslate = slideStep * sliderItem.length;
 
 
-window.addEventListener('resize', ()=>{
-    console.log('Изменён размер документа')
+window.addEventListener('resize', () => {
 
     rootSlider.style.transform = `translate(0px)`;
     slideStep = sliderList.offsetWidth;
     maxTranslate = slideStep * sliderItem.length;
 
-    console.log(slideStep);
-    console.log(maxTranslate);
 })
 
 
@@ -85,4 +87,57 @@ function moveLeft() {
 }
 
 
-// ************************  END Слайдер товаров
+// END - Слайдер товаров
+
+
+
+
+// Аккордеон Команда
+
+let teamMemberName = document.querySelectorAll('.teamMember__name');
+let teamMemberDesc = document.querySelectorAll('.teamMember__desc');
+let teamMemberAvatar = document.querySelectorAll('.teamMember__avatar');
+
+
+teamMemberName.forEach((item, index) => {
+
+    item.addEventListener('click', (e) => {
+
+        e.preventDefault();
+
+        let parent = teamMemberName[index].parentNode;
+        let thisDesc = parent.querySelector('.teamMember__desc');
+        let thisAvatar = parent.querySelector('.teamMember__avatar');
+
+        let clearClass = () => {
+            teamMemberDesc.forEach(desc => {
+                desc.classList.remove('teamMember__desc--active');
+            });
+            teamMemberName.forEach(name => {
+                name.classList.remove('teamMember__name--active');
+            });
+            teamMemberAvatar.forEach(avatar => {
+                avatar.classList.remove('teamMember__avatar--active');
+            });
+        }
+
+
+        if (item.classList.contains('teamMember__name--active')) {
+            clearClass();
+
+        } else {
+
+            clearClass()
+
+            item.classList.add('teamMember__name--active');
+            thisDesc.classList.add('teamMember__desc--active');
+            thisAvatar.classList.add('teamMember__avatar--active');
+        }
+
+
+
+    }
+    )
+})
+
+// END - Аккордеон Команда

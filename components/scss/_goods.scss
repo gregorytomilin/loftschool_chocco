@@ -9,12 +9,16 @@
         bottom: -10rem;
         right: 0;
         content: url("../img/decor/big-leaf-green.svg");
+
+        @include tablets{
+            // width: 30%;
+        }
     }
 }
 
 .goods-slider{
     overflow: hidden;
-    
+
    -ms-user-select: none;
    -moz-user-select: none;
    -khtml-user-select: none;
