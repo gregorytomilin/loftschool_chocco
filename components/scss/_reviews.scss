@@ -5,7 +5,7 @@
 
   height: auto;
   padding: rem(50px) rem(45px) rem(34px);
-  background:rgba($color: F8FAF95, $alpha: 0.95) url("../img/decor/drown-berries.png") right top no-repeat;
+  background:rgba($color: #f5f5f5, $alpha: 0.95) url("../img/decor/drown-berries.png") right top no-repeat;
   overflow: hidden;
   position: relative;
   transition: all ease .2s;
@@ -30,10 +30,7 @@
   }
 
   &--hidden{
-    height: 0;
-    padding: 0;
-    visibility: hidden;
-    opacity: 0;
+    display: none;
   }
 }
 
