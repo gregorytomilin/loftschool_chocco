@@ -141,3 +141,33 @@ teamMemberName.forEach((item, index) => {
 })
 
 // END - Аккордеон Команда
+
+function removeClassOfArray(arrayName, className){
+    arrayName.forEach(arrayItem => {
+        arrayItem.classList.remove(className);
+    });
+}
+
+function addClassOfArray(arrayName, className){
+    arrayName.forEach(arrayItem => {
+        arrayItem.classList.add(className);
+    });
+}
+
+// СлайдШоу Отзывы
+
+let feedbacks = document.querySelectorAll('.reviews__display');
+let feedbackUser = document.querySelectorAll('.reviews__swither-item');
+
+console.log(feedbacks, feedbackUser);
+
+feedbackUser.forEach((user, number) => {
+    user.addEventListener('click', (e) => {
+        
+        e.preventDefault();
+        removeClassOfArray(feedbackUser, 'interactive-avatar--active');
+        addClassOfArray(feedbacks, 'reviews__display--hidden');
+        feedbacks[number].classList.remove('reviews__display--hidden');
+        user.classList.add('interactive-avatar--active');
+    })
+})
