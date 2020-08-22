@@ -159,7 +159,6 @@ function addClassOfArray(arrayName, className){
 let feedbacks = document.querySelectorAll('.reviews__display');
 let feedbackUser = document.querySelectorAll('.reviews__swither-item');
 
-console.log(feedbacks, feedbackUser);
 
 feedbackUser.forEach((user, number) => {
     user.addEventListener('click', (e) => {
@@ -170,4 +169,62 @@ feedbackUser.forEach((user, number) => {
         feedbacks[number].classList.remove('reviews__display--hidden');
         user.classList.add('interactive-avatar--active');
     })
+})
+
+// Отправка данных на сервер
+
+const closeResponceForm = document.querySelector('.app-closeResponceForm');
+const responseModal = document.querySelector('.responseModal');
+const responseModalForm = responseModal.querySelector('.responseModal__title');
+
+closeResponceForm.addEventListener('click', ()=>{
+    responseModal.style.display = 'none';
+    document.body.style.overflow = 'visible';
+})
+
+$('.form').submit(e=>{
+    e.preventDefault();
+    const form = $(e.currentTarget);
+    const name = form.find("[name='name']");
+    const phone = form.find("[name='phone']");
+    const comment = form.find("[name='comment']");
+    const to = form.find("[name='to']");
+
+    [name, phone, comment, to].forEach(field => {
+        if (field.val().trim() === ''){
+            field.addClass("inputError");
+        } else {
+            field.removeClass("inputError");
+
+}
+});
+
+    const inputError = form.find('.inputError');
+
+    if(inputError.length === 0){
+
+        $.ajax({
+            url: "https://webdev-api.loftschool.com/sendmail",
+            method: "post",
+            data: {
+                name: name.val(),
+                phone: phone.val(),
+                comment: comment.val(),
+                to: to.val()
+            },
+
+            success: data => {
+                responseModal.style.display = 'flex';
+                responseModalForm.innerHTML = data.message;
+                document.body.style.overflow = 'hidden';
+            },
+            error: data =>{
+                responseModal.style.display = 'flex'
+                responseModalForm.innerHTML = data.responseJSON.message;
+                document.body.style.overflow = 'hidden';
+            }
+        })
+
+    }
+
 })

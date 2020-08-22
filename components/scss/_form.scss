@@ -1,3 +1,4 @@
+
 .form{
   display: flex;
 
@@ -42,6 +43,11 @@
   width: 100%;
   border: solid rem(3px) transparent;
   padding: rem(18px) rem(11px);
+
+
+  &.inputError{
+    border-color: #8c0da8 !important;
+  }
 
   &--textarea{
     height: rem(180px);
