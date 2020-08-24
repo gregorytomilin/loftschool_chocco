@@ -231,3 +231,86 @@ $('.form').submit(e=>{
     }
 
 })
+
+
+// Видео плеер
+
+
+const containerVideo = document.querySelector('.video');
+const video = containerVideo.querySelector('video');
+const playpause = containerVideo.querySelector('.video__playpause');
+const play = containerVideo.querySelector('.video__play');
+const controls = containerVideo.querySelector('.video__controls');
+const total = containerVideo.querySelector('.video__total');
+const progress = containerVideo.querySelector('.video__current');
+const dynamic = containerVideo.querySelector('.video__volume-control');
+const volume = containerVideo.querySelector('.video__volume-progress');
+const volumeProgress = volume.firstElementChild;
+
+playpause.addEventListener('click', togglePlay);
+play.addEventListener('click', togglePlay);
+video.addEventListener('play', playPause);
+video.addEventListener('pause', playPause);
+total.addEventListener('click', setCurrentTime);
+video.addEventListener('timeupdate', timeUpdate);
+dynamic.addEventListener('click', mute);
+volume.addEventListener('click', setVolume);
+
+function setVolume(e) {
+    volumeProgress.style.width = `${e.offsetX-6}px`;
+    video.volume = e.offsetX / volume.clientWidth;
+}
+
+function mute(e) {
+    dynamic.classList.toggle('muted');
+    console.log(video.muted)
+    video.muted = !video.muted;
+    if(video.muted){
+        dynamic.innerHTML = `
+        <svg class="video__play-iconSound">
+        <use xlink:href="img/icons/sprite.svg#player-mute" />
+    </svg>
+        `
+    } else {
+        dynamic.innerHTML = `
+        <svg class="video__play-iconSound">
+        <use xlink:href="img/icons/sprite.svg#player-sound" />
+    </svg>
+        `
+    }
+}
+
+function playPause() {
+    controls.classList.toggle('paused');
+    if(video.paused){
+        playpause.innerHTML =
+        `
+        <svg class="video__playpause-icon">
+        <use xlink:href="img/icons/sprite.svg#player-play" />
+    </svg>
+        `;
+
+    } else {
+        playpause.innerHTML =
+        `
+        <svg class="video__playpause-icon">
+            <use xlink:href="img/icons/sprite.svg#player-pause" />
+        </svg>
+        `
+
+    }
+}
+
+function togglePlay() {
+    video.paused ?  video.play() : video.pause();
+}
+
+function setCurrentTime(e) {
+    const offsetX = e.offsetX / total.clientWidth;
+    video.currentTime = offsetX * video.duration;
+}
+
+function timeUpdate() {
+    const progressTime = video.currentTime / video.duration;
+    progress.style.width = `${progressTime * total.clientWidth - 6}px`;
+}

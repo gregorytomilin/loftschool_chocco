@@ -1,0 +1,15 @@
+.video-section{
+    background: #F8FAF9;
+    position: relative;
+
+    &::before{
+        content: url("../img/decor/blackberries.png");
+        position: absolute;
+        bottom: -150px;
+        right: 0;
+
+        @include phones{
+          display: none;
+        }
+      }
+}

@@ -1,0 +1,114 @@
+.video {
+    position: relative;
+    &__mp4 {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      @include tablets {
+        width: 100%;
+        height: auto;
+      }
+    }
+    &__controls {
+      display: flex;
+      align-items: center;
+      background-color: #3e3e3e;
+      height: 35px;
+      padding: 0 22px 0 9px;
+      @include tablets {
+        padding: 0 38px;
+      }
+      @include phones {
+        padding: 0 23px;
+      }
+    }
+    &__playpause,
+    &__volume-control {
+      height: 35px;
+      width: 36px;
+      cursor: pointer;
+    }
+    &__play {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      svg.video__play-icon {
+        fill: rgba(256,256,256, 0.9);
+        @include tablets {
+          fill: rgba(0,0,0, 0.9);
+        }
+      }
+    }
+    .paused {
+      .video__play-icon {
+        visibility: hidden;
+      }
+      .video__playpause-icon {
+        fill-opacity: 0.9;
+      }
+    }
+    &__progress,
+    &__volume-progress {
+      height: 4px;
+      background-color: #626262;
+      flex: 1;
+      cursor: pointer;
+    }
+    &__total {
+      width: 100%;
+      background: #626262;
+      display: flex;
+      height: 100%;
+    }
+    &__current,
+    &__volume-current {
+      height: 100%;
+      background: rgb(102, 121, 173);
+      display: flex;
+      position: relative;
+      &::before {
+        content: "";
+        height: 13px;
+        width: 13px;
+        border-radius: 50%;
+        display: flex;
+        background-color: #626262;
+        position: absolute;
+        top: 0;
+        transform: translate(0, -35%);
+        left: 100%;
+      }
+    }
+    .muted {
+      svg {
+        fill-opacity: 0.3;
+      }
+    }
+
+    &__volume-progress {
+      min-width: 58px;
+      margin-left: 7px;
+    }
+
+    &__volume {
+      display: flex;
+      align-items: center;
+      margin-left: 38px;
+      @include tablets {
+        display: none;
+      }
+    }
+    &__volume-control:focus, &__volume-control:active{
+      background: none;
+      outline: none;
+      background-color: transparent;
+    }
+    svg {
+      margin-top: 10%;
+      max-width: 80%;
+      max-height: 80%;
+      fill: #c0c0c0;
+    }
+}
