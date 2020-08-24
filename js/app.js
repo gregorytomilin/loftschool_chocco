@@ -162,7 +162,7 @@ let feedbackUser = document.querySelectorAll('.reviews__swither-item');
 
 feedbackUser.forEach((user, number) => {
     user.addEventListener('click', (e) => {
-        
+
         e.preventDefault();
         removeClassOfArray(feedbackUser, 'interactive-avatar--active');
         addClassOfArray(feedbacks, 'reviews__display--hidden');
@@ -217,6 +217,9 @@ $('.form').submit(e=>{
                 responseModal.style.display = 'flex';
                 responseModalForm.innerHTML = data.message;
                 document.body.style.overflow = 'hidden';
+                name.val('');
+                phone.val('');
+                comment.val('');
             },
             error: data =>{
                 responseModal.style.display = 'flex'
