@@ -12,9 +12,11 @@
     &__controls {
       display: flex;
       align-items: center;
+      justify-content: center;
       background-color: #3e3e3e;
       height: 35px;
       padding: 0 22px 0 9px;
+
       @include tablets {
         padding: 0 38px;
       }
@@ -24,16 +26,32 @@
     }
     &__playpause,
     &__volume-control {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       height: 35px;
       width: 36px;
       cursor: pointer;
     }
     &__play {
+      display: flex;
+      justify-content: center;
       cursor: pointer;
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+
+      &pause{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      &pause-icon{
+        fill: #626262 !important;
+        width: 50%;
+        height: 50%;
+      }
       svg.video__play-icon {
         fill: rgba(256,256,256, 0.9);
         @include tablets {
@@ -106,9 +124,13 @@
       background-color: transparent;
     }
     svg {
-      margin-top: 10%;
       max-width: 80%;
       max-height: 80%;
       fill: #c0c0c0;
     }
+}
+
+.video__play-iconSound{
+  width: 70%;
+  height: 70%;
 }
