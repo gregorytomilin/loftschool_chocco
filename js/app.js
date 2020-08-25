@@ -110,25 +110,16 @@ teamMemberName.forEach((item, index) => {
         let thisAvatar = parent.querySelector('.teamMember__avatar');
 
         let clearClass = () => {
-            teamMemberDesc.forEach(desc => {
-                desc.classList.remove('teamMember__desc--active');
-            });
-            teamMemberName.forEach(name => {
-                name.classList.remove('teamMember__name--active');
-            });
-            teamMemberAvatar.forEach(avatar => {
-                avatar.classList.remove('teamMember__avatar--active');
-            });
+            removeClassOfArray(teamMemberDesc, 'teamMember__desc--active');
+            removeClassOfArray(teamMemberName, 'teamMember__name--active');
+            removeClassOfArray(teamMemberAvatar, 'teamMember__avatar--active');
         }
 
 
         if (item.classList.contains('teamMember__name--active')) {
             clearClass();
-
         } else {
-
-            clearClass()
-
+            clearClass();
             item.classList.add('teamMember__name--active');
             thisDesc.classList.add('teamMember__desc--active');
             thisAvatar.classList.add('teamMember__avatar--active');
@@ -171,7 +162,7 @@ feedbackUser.forEach((user, number) => {
     })
 })
 
-// Отправка данных на сервер
+// Отправка данных на сервер + валидация формы
 
 const closeResponceForm = document.querySelector('.app-closeResponceForm');
 const responseModal = document.querySelector('.responseModal');
@@ -263,7 +254,6 @@ function setVolume(e) {
 
 function mute(e) {
     dynamic.classList.toggle('muted');
-    console.log(video.muted)
     video.muted = !video.muted;
     if(video.muted){
         dynamic.innerHTML = `
@@ -314,3 +304,32 @@ function timeUpdate() {
     const progressTime = video.currentTime / video.duration;
     progress.style.width = `${progressTime * total.clientWidth - 6}px`;
 }
+
+// Аккордеон меню
+
+const accordeonTabs = document.querySelectorAll('.sizes__list li');
+const accordeonItems = document.querySelectorAll('.sizes__item-description');
+
+const tabWidth = document.querySelector('.sizes__item-title').offsetWidth;
+const windowWidth = document.documentElement.clientWidth;
+const maxAccordeonItemWidth = windowWidth - tabWidth * accordeonItems.length;
+
+accordeonTabs.forEach((item, index) => {
+    item.addEventListener('click', (e) => {
+        if(accordeonItems[index].classList.contains('sizes__item-description_active')){
+            accordeonItems[index].classList.toggle('sizes__item-description_active');
+        } else {
+            removeClassOfArray(accordeonItems, 'sizes__item-description_active');
+            accordeonItems[index].classList.toggle('sizes__item-description_active');
+        }
+
+        if(windowWidth<480){
+            accordeonItems[index].style.width = maxAccordeonItemWidth + 'px';
+        }
+    })
+})
+
+
+
+console.log(maxAccordeonItemWidth);
+
