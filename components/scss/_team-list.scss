@@ -63,12 +63,7 @@
         text-decoration: none;
         color: #292929;
         margin: 0 auto;
-        &::after{
-            content: '';
-            background: url('../img/icons/triangle.svg');
-            height: 20px;
-            width: 20px;
-        }
+ 
 
         svg{
             width: 8px;

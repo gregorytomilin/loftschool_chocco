@@ -40,7 +40,7 @@
 
 
 
-  .sizes {
+  .choccoTypes {
     height: 100%;
 
     &__list {
@@ -59,22 +59,37 @@
       height: 100%;
       cursor: pointer;
       display: flex;
-
-      &_silver {
-        background: #999999;
+      background: rgba(51, 53, 55, 0.1);
+      p {
+        visibility: hidden;
+        opacity: 0;
+        transition: all ease .5s;
+        transition-delay: .5s;
       }
 
-      &_black {
-        background: #151515;
+      &_silver .choccoTypes__item-title{
+        background:  url("../img/decor/accrodion_fon1.png") no-repeat center  rgba(51, 53, 55, .5);
+        background-blend-mode: multiply;
+        background-size: cover;
       }
 
-      &_red {
-        background: #E01F3C;
+      &_black .choccoTypes__item-title{
+        background:  url("../img/decor/accrodion_fon2.png") no-repeat center  rgba(51, 53, 55, .5);
+        background-blend-mode: multiply;
+        background-size: cover;
+      }
+
+      &_red .choccoTypes__item-title{
+        background:  url("../img/decor/accrodion_fon3.png") no-repeat center  rgba(51, 53, 55, .5);
+        background-blend-mode: multiply;
+        background-size: cover;
       }
 
 
 
       &-title {
+        display: flex;
+        align-items: center;
         min-width: 80px;
         position: relative;
         height: 100%;
@@ -90,8 +105,8 @@
           color: #FFFFFF;
           position: absolute;
           bottom: 0;
-          left: 0;
-          transform: rotateZ(-90deg);
+          left: 50%;
+          transform: rotateZ(-90deg) translate(0, -50%);
           transform-origin: 0 0;
         //   line-height: 80px;
           white-space: nowrap;
@@ -103,7 +118,7 @@
       }
 
       &-description {
-        background: rgba(51, 53, 55, .9);
+        background: rgba(51, 53, 55, .5);
         max-width: 0;
         opacity: 0;
         visibility: hidden;

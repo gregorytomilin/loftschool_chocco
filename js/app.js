@@ -307,20 +307,26 @@ function timeUpdate() {
 
 // Аккордеон меню
 
-const accordeonTabs = document.querySelectorAll('.sizes__list li');
-const accordeonItems = document.querySelectorAll('.sizes__item-description');
+const accordeonTabs = document.querySelectorAll('.choccoTypes__list li');
+const accordeonItems = document.querySelectorAll('.choccoTypes__item-description');
 
-const tabWidth = document.querySelector('.sizes__item-title').offsetWidth;
+const tabWidth = document.querySelector('.choccoTypes__item-title').offsetWidth;
 const windowWidth = document.documentElement.clientWidth;
 const maxAccordeonItemWidth = windowWidth - tabWidth * accordeonItems.length;
 
 accordeonTabs.forEach((item, index) => {
     item.addEventListener('click', (e) => {
-        if(accordeonItems[index].classList.contains('sizes__item-description_active')){
-            accordeonItems[index].classList.toggle('sizes__item-description_active');
+        if(accordeonItems[index].classList.contains('choccoTypes__item-description_active')){
+            accordeonItems[index].classList.toggle('choccoTypes__item-description_active');
+            accordeonItems[index].querySelector('p').style.visibility = 'hidden';
+            accordeonItems[index].querySelector('p').style.opacity = '0';
+
         } else {
-            removeClassOfArray(accordeonItems, 'sizes__item-description_active');
-            accordeonItems[index].classList.toggle('sizes__item-description_active');
+
+            removeClassOfArray(accordeonItems, 'choccoTypes__item-description_active');
+            accordeonItems[index].classList.toggle('choccoTypes__item-description_active');
+            accordeonItems[index].querySelector('p').style.visibility = 'visible';
+            accordeonItems[index].querySelector('p').style.opacity = '1';
         }
 
         if(windowWidth<480){
