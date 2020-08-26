@@ -62,10 +62,18 @@
       background: rgba(51, 53, 55, 0.1);
       p {
         visibility: hidden;
-        min-width: 200px;
+        min-width: 400px;
         opacity: 0;
         transition: all ease .5s;
         transition-delay: .5s;
+        @include phones {
+          min-width: auto;
+        }
+      }
+
+      .visible {
+        opacity: 1;
+        visibility: visible;
       }
 
       &_silver .choccoTypes__item-title{

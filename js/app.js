@@ -309,6 +309,8 @@ function timeUpdate() {
 
 const accordeonTabs = document.querySelectorAll('.choccoTypes__list li');
 const accordeonItems = document.querySelectorAll('.choccoTypes__item-description');
+const accordeonItemsDescription = document.querySelectorAll('.choccoTypes__item-description p');
+
 
 const tabWidth = document.querySelector('.choccoTypes__item-title').offsetWidth;
 const windowWidth = document.documentElement.clientWidth;
@@ -316,22 +318,25 @@ const maxAccordeonItemWidth = windowWidth - tabWidth * accordeonItems.length;
 
 accordeonTabs.forEach((item, index) => {
     item.addEventListener('click', (e) => {
+        let descriptionBlock =  accordeonItems[index].querySelector('p')
+        if(windowWidth<480){
+            accordeonItems[index].style.width = maxAccordeonItemWidth + 'px';
+            descriptionBlock.style.minWidth = maxAccordeonItemWidth + 'px';
+        }
+
         if(accordeonItems[index].classList.contains('choccoTypes__item-description_active')){
             accordeonItems[index].classList.toggle('choccoTypes__item-description_active');
-            accordeonItems[index].querySelector('p').style.visibility = 'hidden';
-            accordeonItems[index].querySelector('p').style.opacity = '0';
+            descriptionBlock.classList.toggle('visible');
 
         } else {
 
             removeClassOfArray(accordeonItems, 'choccoTypes__item-description_active');
+            removeClassOfArray( accordeonItemsDescription, 'visible');
             accordeonItems[index].classList.toggle('choccoTypes__item-description_active');
-            accordeonItems[index].querySelector('p').style.visibility = 'visible';
-            accordeonItems[index].querySelector('p').style.opacity = '1';
+            descriptionBlock.classList.toggle('visible');
         }
 
-        if(windowWidth<480){
-            accordeonItems[index].style.width = maxAccordeonItemWidth + 'px';
-        }
+
     })
 })
 
