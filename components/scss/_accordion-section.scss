@@ -65,7 +65,7 @@
         min-width: 524px;
         opacity: 0;
         transition: all ease .5s;
-        transition-delay: .5s;
+        //transition-delay: .5s;
         @include phones {
           min-width: auto;
         }
