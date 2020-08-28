@@ -24,6 +24,7 @@
   margin: 0 30px;
   visibility: visible;
   opacity: 1;
+
   &.hidden{
     visibility: visible;
     opacity: 1;
@@ -42,7 +43,8 @@
     top: 0;
     left: 0;
     background: rgb(54, 54, 54);
-    transition: all ease 200ms;
+    transition: opacity ease 200ms;
+    transition: transform ease 1s;
     &.hidden{
       visibility: hidden;
       opacity: 0;

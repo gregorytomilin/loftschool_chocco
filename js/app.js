@@ -7,7 +7,8 @@ let $menu = document.querySelector('.menu');
 
 $hamburgerMenuBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    $menu.classList.add('visible')
+    $menu.classList.add('visible');
+    $hamburgerMenuBtn.style.display = 'none';
     document.body.style.overflow = 'hidden';
 
 })
@@ -15,6 +16,7 @@ $hamburgerMenuBtn.addEventListener('click', (e) => {
 $closeMenuBtn.addEventListener('click', (e) => {
     e.preventDefault();
     $menu.classList.remove('visible');
+    $hamburgerMenuBtn.style.display = 'flex';
     document.body.style.overflow = 'visible';
 })
 
@@ -379,7 +381,7 @@ const changeMenuThemeForSection = sectionEq => {
 const resetActiveClassForItem = (items, itemEq, activeClass) => {
     items.eq(itemEq).addClass(activeClass).siblings().removeClass(activeClass);
 }
-
+const menuBlockMobile = document.querySelector('.menu');
 const performTransition = (sectionEq) => {
 
     if (inScroll) return;
@@ -392,6 +394,11 @@ const performTransition = (sectionEq) => {
     display.css({
         transform: `translateY(${position}%)`
     });
+
+
+    if( windowWidth < 768 ){
+        menuBlockMobile.style.transform = `translateY(${-position}%)`;
+    }
 
 
     resetActiveClassForItem(sections, sectionEq, 'active');
@@ -498,16 +505,23 @@ navFixedMenuItems.forEach((item, index) => {
 
 function goToSection(index) {
     viewPort.style.transform = `translateY(${(index) * (-100)}%)`;
+
+    if( windowWidth < 768 ){
+        menuBlockMobile.style.transform = `translateY(${(index) * 100}%)`;
+    }
     removeClassOfArray(sectionsNav, 'active');
     removeClassOfArray(navFixedMenuItems, 'fixed-menu__item--active');
     navFixedMenuItems[index].classList.add('fixed-menu__item--active');
     changeMenuThemeForSection(index);
     sectionsNav[index].classList.add('active');
+
 }
 
 navMenuItems.forEach((item, index) => {
     item.addEventListener('click', (e) => {
         e.preventDefault();
+        $hamburgerMenuBtn.style.display = 'flex';
+        $menu.classList.remove('visible');
 
         switch (index) {
             case 0:
