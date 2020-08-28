@@ -133,13 +133,13 @@ teamMemberName.forEach((item, index) => {
 
 // END - Аккордеон Команда
 
-function removeClassOfArray(arrayName, className){
+function removeClassOfArray(arrayName, className) {
     arrayName.forEach(arrayItem => {
         arrayItem.classList.remove(className);
     });
 }
 
-function addClassOfArray(arrayName, className){
+function addClassOfArray(arrayName, className) {
     arrayName.forEach(arrayItem => {
         arrayItem.classList.add(className);
     });
@@ -168,12 +168,12 @@ const closeResponceForm = document.querySelector('.app-closeResponceForm');
 const responseModal = document.querySelector('.responseModal');
 const responseModalForm = responseModal.querySelector('.responseModal__title');
 
-closeResponceForm.addEventListener('click', ()=>{
+closeResponceForm.addEventListener('click', () => {
     responseModal.style.display = 'none';
     document.body.style.overflow = 'visible';
 })
 
-$('.form').submit(e=>{
+$('.form').submit(e => {
     e.preventDefault();
     const form = $(e.currentTarget);
     const name = form.find("[name='name']");
@@ -182,17 +182,17 @@ $('.form').submit(e=>{
     const to = form.find("[name='to']");
 
     [name, phone, comment, to].forEach(field => {
-        if (field.val().trim() === ''){
+        if (field.val().trim() === '') {
             field.addClass("inputError");
         } else {
             field.removeClass("inputError");
 
-}
-});
+        }
+    });
 
     const inputError = form.find('.inputError');
 
-    if(inputError.length === 0){
+    if (inputError.length === 0) {
 
         $.ajax({
             url: "https://webdev-api.loftschool.com/sendmail",
@@ -212,7 +212,7 @@ $('.form').submit(e=>{
                 phone.val('');
                 comment.val('');
             },
-            error: data =>{
+            error: data => {
                 responseModal.style.display = 'flex'
                 responseModalForm.innerHTML = data.responseJSON.message;
                 document.body.style.overflow = 'hidden';
@@ -248,14 +248,14 @@ dynamic.addEventListener('click', mute);
 volume.addEventListener('click', setVolume);
 
 function setVolume(e) {
-    volumeProgress.style.width = `${e.offsetX-6}px`;
+    volumeProgress.style.width = `${e.offsetX - 6}px`;
     video.volume = e.offsetX / volume.clientWidth;
 }
 
 function mute(e) {
     dynamic.classList.toggle('muted');
     video.muted = !video.muted;
-    if(video.muted){
+    if (video.muted) {
         dynamic.innerHTML = `
         <svg class="video__play-iconSound">
         <use xlink:href="img/icons/sprite.svg#player-mute" />
@@ -272,9 +272,9 @@ function mute(e) {
 
 function playPause() {
     controls.classList.toggle('paused');
-    if(video.paused){
+    if (video.paused) {
         playpause.innerHTML =
-        `
+            `
         <svg class="video__playpause-icon">
         <use xlink:href="img/icons/sprite.svg#player-play" />
     </svg>
@@ -282,7 +282,7 @@ function playPause() {
 
     } else {
         playpause.innerHTML =
-        `
+            `
         <svg class="video__playpause-icon">
             <use xlink:href="img/icons/sprite.svg#player-pause" />
         </svg>
@@ -292,7 +292,7 @@ function playPause() {
 }
 
 function togglePlay() {
-    video.paused ?  video.play() : video.pause();
+    video.paused ? video.play() : video.pause();
 }
 
 function setCurrentTime(e) {
@@ -318,20 +318,20 @@ const maxAccordeonItemWidth = windowWidth - tabWidth * accordeonItems.length;
 
 accordeonTabs.forEach((item, index) => {
     item.addEventListener('click', (e) => {
-        let descriptionBlock =  accordeonItems[index].querySelector('p')
-        if(windowWidth<480){
+        let descriptionBlock = accordeonItems[index].querySelector('p')
+        if (windowWidth < 480) {
             accordeonItems[index].style.width = maxAccordeonItemWidth + 'px';
             descriptionBlock.style.minWidth = maxAccordeonItemWidth + 'px';
         }
 
-        if(accordeonItems[index].classList.contains('choccoTypes__item-description_active')){
+        if (accordeonItems[index].classList.contains('choccoTypes__item-description_active')) {
             accordeonItems[index].classList.toggle('choccoTypes__item-description_active');
             descriptionBlock.classList.toggle('visible');
 
         } else {
 
             removeClassOfArray(accordeonItems, 'choccoTypes__item-description_active');
-            removeClassOfArray( accordeonItemsDescription, 'visible');
+            removeClassOfArray(accordeonItemsDescription, 'visible');
             accordeonItems[index].classList.toggle('choccoTypes__item-description_active');
             descriptionBlock.classList.toggle('visible');
         }
@@ -357,7 +357,7 @@ sections.first().addClass('active');
 
 const countSectionPosition = sectionEq => {
     const position = sectionEq * -100
-    if(isNaN(position)){
+    if (isNaN(position)) {
         return 0;
     }
     return position;
@@ -369,7 +369,7 @@ const changeMenuThemeForSection = sectionEq => {
     const activeClass = "fixed-menu--shadowed"
 
 
-    if( menuTheme === 'black' ) {
+    if (menuTheme === 'black') {
         sideMenu.addClass(activeClass);
     } else {
         sideMenu.removeClass(activeClass);
@@ -382,25 +382,25 @@ const resetActiveClassForItem = (items, itemEq, activeClass) => {
 
 const performTransition = (sectionEq) => {
 
-    if(inScroll) return;
+    if (inScroll) return;
 
     const transitionOver = 1000;
     const mouseInertionOver = 300;
-        inScroll = true;
-        const position = countSectionPosition(sectionEq);
-        changeMenuThemeForSection(sectionEq);
-        display.css({
-            transform: `translateY(${position}%)`
-        });
+    inScroll = true;
+    const position = countSectionPosition(sectionEq);
+    changeMenuThemeForSection(sectionEq);
+    display.css({
+        transform: `translateY(${position}%)`
+    });
 
 
-        resetActiveClassForItem(sections, sectionEq, 'active');
+    resetActiveClassForItem(sections, sectionEq, 'active');
 
-    setTimeout(()=>{
+    setTimeout(() => {
         inScroll = false;
 
         resetActiveClassForItem(menuItems, sectionEq, 'fixed-menu__item--active')
-       }, transitionOver + mouseInertionOver);
+    }, transitionOver + mouseInertionOver);
 
 
 }
@@ -412,12 +412,12 @@ const viewportScroller = () => {
     const prevSection = activeSection.prev();
 
     return {
-        next () {
+        next() {
             if (nextSection.length) {
                 performTransition(nextSection.index());
             }
         },
-        prev () {
+        prev() {
             if (prevSection.length) {
                 performTransition(prevSection.index());
             }
@@ -429,57 +429,121 @@ const viewportScroller = () => {
 
 };
 
-$(window).on('wheel', e=>{
+$(window).on('wheel', e => {
     const deltaY = e.originalEvent.deltaY;
     const scroller = viewportScroller();
 
 
-    if(deltaY > 0) {
+    if (deltaY > 0) {
         scroller.next()
     }
-    if(deltaY < 0) {
+    if (deltaY < 0) {
         scroller.prev()
     }
 });
 
-$(window).on('keydown', e =>{
+$(window).on('keydown', e => {
     const tagName = e.target.tagName.toLowerCase();
     const userTypingInInputs = tagName === 'input' || tagName === 'textarea';
     const scroller = viewportScroller();
 
 
-    if(userTypingInInputs) return;
-        switch (e.keyCode) {
-            case 38:
-                scroller.prev();
-                break;
-            case 40:
-                scroller.next();
-                break;
+    if (userTypingInInputs) return;
+    switch (e.keyCode) {
+        case 38:
+            scroller.prev();
+            break;
+        case 40:
+            scroller.next();
+            break;
 
-        }
+    }
 
 
 });
 
 // https://github.com/mattbryson/TouchSwipe-Jquery-Plugin
-$('.wrapper').on('touchmove', e=>{
+$('.wrapper').on('touchmove', e => {
     e.preventDefault();
 })
 
-if (isMobile){
+if (isMobile) {
 
-    $("body").swipe( {
-        swipe:function(event, direction) {
+    $("body").swipe({
+        swipe: function (event, direction) {
             const scroller = viewportScroller();
             let scrollDirection = '';
-            if(direction === 'up') scrollDirection = 'next';
-            if(direction === 'down') scrollDirection = 'prev';
+            if (direction === 'up') scrollDirection = 'next';
+            if (direction === 'down') scrollDirection = 'prev';
             scroller[scrollDirection]();
 
         }
     });
 
 }
+
+const navMenuItems = document.querySelectorAll('.menu__link');
+const navFixedMenuItems = document.querySelectorAll('.fixed-menu__item');
+const viewPort = document.querySelector('.maincontent');
+const sectionsNav = document.querySelectorAll('section');
+
+
+navFixedMenuItems.forEach((item, index) => {
+    item.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToSection(index);
+    });
+
+})
+
+function goToSection(index) {
+    viewPort.style.transform = `translateY(${(index) * (-100)}%)`;
+    removeClassOfArray(sectionsNav, 'active');
+    removeClassOfArray(navFixedMenuItems, 'fixed-menu__item--active');
+    navFixedMenuItems[index].classList.add('fixed-menu__item--active');
+    changeMenuThemeForSection(index);
+    sectionsNav[index].classList.add('active');
+}
+
+navMenuItems.forEach((item, index) => {
+    item.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        switch (index) {
+            case 0:
+                goToSection(1)
+                break;
+            case 1:
+                goToSection(2)
+                break;
+            case 2:
+                goToSection(3)
+                break;
+            case 3:
+                goToSection(4)
+                break;
+            case 4:
+                goToSection(5)
+                break;
+            case 5:
+                goToSection(6)
+                break;
+            case 6:
+                goToSection(8)
+                break;
+
+        }
+
+    })
+});
+
+
+const linkToOrder = document.querySelectorAll('.linkToOrder');
+linkToOrder.forEach((item)=>{
+    item.addEventListener('click', (e)=>{
+        e.preventDefault();
+        goToSection(7)
+    })
+})
 
 
