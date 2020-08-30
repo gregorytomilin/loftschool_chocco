@@ -1,0 +1,23 @@
+.features{
+  display: flex;
+  position: relative;
+  // width: 46%;
+}
+
+.feature__item{
+  z-index: 10;
+  margin-right: rem(46px);
+  &:last-child{
+    margin-right: 0;
+  }
+}
+
+.feature__icon{
+  width: rem(40px);
+  height: rem(40px);
+  img{
+    width: rem(40px);
+    height: rem(40px);
+    margin-right: rem(12px);
+  }
+}

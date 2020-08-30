@@ -1,0 +1,63 @@
+$containerWidth : 940px;
+$baseFontSize : 18px;
+
+//breackpoints
+
+$tablets: 768px;
+$phones: 480px;
+
+$blue : #61C4D9;
+$darkGreen : #0b4d3c;
+$z-fixed-menu : 100;
+
+//normalize
+
+
+@import "scss/normalize";
+@import "scss/reset";
+@import "scss/media";
+@import "scss/hero";
+@import "scss/header";
+@import "scss/headline";
+@import "scss/feautures";
+@import "scss/feature";
+@import "scss/btn";
+@import "scss/section";
+@import "scss/layout";
+@import "scss/benefits";
+@import "scss/benefit";
+@import "scss/benefits-section";
+@import "scss/reviews";
+@import "scss/interactive-avatar";
+@import "scss/order-section";
+@import "scss/form";
+@import "scss/radio";
+@import "scss/fixed-menu";
+@import "scss/contacts";
+@import "scss/hamburger";
+@import "scss/smm-links";
+@import "scss/team-list";
+@import "scss/responseModal";
+@import "scss/video-section";
+@import "scss/video-player";
+
+@import "scss/goods";
+@import "scss/accordion-section";
+
+// slider
+@import "scss/slider-slider";
+@import "scss/slider-ingredients";
+@import "scss/slider-specifications";
+@import "scss/slider-cost";
+@import "scss/slider-button";
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,300;0,400;0,500;0,800;1,100;1,300;1,400;1,500;1,700&display=swap');
+
+body{
+  font-family: "Alegreya Sans";
+  position: relative;
+}
+
