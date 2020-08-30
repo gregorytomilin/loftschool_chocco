@@ -2,7 +2,8 @@ const { src, dest, task, series, watch } = require("gulp");
 const rm = require('gulp-rm');
 const sass = require('gulp-sass');
 const browserSync = require('browser-sync').create();
-const reload = browserSync.reload
+
+const reload = browserSync.reload;
 
 
 sass.compiler = require('node-sass');
@@ -16,7 +17,7 @@ task('copy:html', () => {
 });
 
 task('styles', () => {
-    return src('src/styles/*.scss')
+    return src('src/styles/main.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(dest('dist/css'))
         .pipe(reload({ stream: true }));
