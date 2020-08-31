@@ -2,6 +2,11 @@ const { src, dest, task, series, watch } = require("gulp");
 const rm = require('gulp-rm');
 const sass = require('gulp-sass');
 const browserSync = require('browser-sync').create();
+// импорт файлов в SCSS по расширению, вместо поштучного импорта
+const sassGlob = require('gulp-sass-glob');
+const autoprefixer = require('gulp-autoprefixer');
+// Перевод пикселей в rem
+const px2rem = require('gulp-smile-px2rem');
 
 const reload = browserSync.reload;
 
@@ -18,7 +23,25 @@ task('copy:html', () => {
 
 task('styles', () => {
     return src('src/styles/main.scss')
+        .pipe(sassGlob())
         .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer({
+
+
+//   Replace Autoprefixer browsers option to Browserslist config.
+//   Use browserslist key in package.json or .browserslistrc file.
+
+//   Using browsers option can cause errors. Browserslist config
+//   can be used for Babel, Autoprefixer, postcss-normalize and other tools.
+
+//   If you really need to use option, rename it to overrideBrowserslist.
+
+//   Learn more at:
+//   https://github.com/browserslist/browserslist#readme
+//   https://twitter.com/browserslist
+overrideBrowserslist: ['last 2 versions'],
+            cascade: false
+          }))
         .pipe(dest('dist/css'))
         .pipe(reload({ stream: true }));
 });
@@ -55,7 +78,7 @@ task('server', () => {
 watch('./src/styles/**/*.scss', series('styles'));
 watch('./src/*.html', series('copy:html'));
 
-task('default', series('clean', 'copy:html', 'copy:img', 'copy:js', 'copy:content', 'styles', 'server'));
+task('prod', series('clean', 'copy:html', 'copy:img', 'copy:js', 'copy:content', 'styles', 'server'));
 
 
 
