@@ -1,4 +1,4 @@
-const { src, dest, task, series, watch } = require("gulp");
+const { src, dest, task, series, watch, parallel } = require("gulp");
 const rm = require('gulp-rm');
 const sass = require('gulp-sass');
 const concat = require('gulp-concat');
@@ -96,7 +96,7 @@ watch('./src/styles/**/*.scss', series('styles'));
 watch('./src/js/**/*.js', series('copy:js'));
 watch('./src/*.html', series('copy:html'));
 
-task('prod', series('clean', 'copy:html', 'copy:img', 'copy:js', 'copy:content', 'styles', 'server'));
+task('prod', series('clean', parallel('copy:html', 'copy:img', 'copy:js', 'copy:content', 'styles'), 'server'));
 
 
 
