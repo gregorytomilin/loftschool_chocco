@@ -49,6 +49,11 @@
         align-items: center;
         justify-content: center;
       }
+      &-icon{
+        @include phones {
+          width: 30%;
+        }
+      }
       &pause-icon{
         fill: #626262 !important;
         width: 50%;

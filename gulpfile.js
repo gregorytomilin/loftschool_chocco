@@ -96,7 +96,7 @@ watch('./src/styles/**/*.scss', series('styles'));
 watch('./src/js/**/*.js', series('copy:js'));
 watch('./src/*.html', series('copy:html'));
 
-task('prod', series('clean', parallel('copy:html', 'copy:img', 'copy:js', 'copy:content', 'styles'), 'server'));
+task('default', series('clean', parallel('copy:html', 'copy:img', 'copy:js', 'copy:content', 'styles'), 'server'));
 
 
 
