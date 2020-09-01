@@ -14,13 +14,20 @@ const gcmq = require('gulp-group-css-media-queries');
 const cleanCSS = require('gulp-clean-css');
 // Компиляция карты кода sourceMap
 const sourcemaps = require('gulp-sourcemaps');
+// Контроль условий
+const gulpif = require('gulp-if');
+// сохраним значение переменной среды NODE_ENV в переменную env (доступ к переменным среды предоставляет объект process.env):
+const env = process.env.NODE_ENV;
 
 const reload = browserSync.reload;
 
 
 sass.compiler = require('node-sass');
 
-task('clean', () => { return src("dist/**/*", { read: false }).pipe(rm()) });
+task('clean', () => {
+    console.log(env); return src("dist/**/*", { read: false })
+        .pipe(rm())
+});
 
 task('copy:html', () => {
     return src('src/*.html')
@@ -30,10 +37,15 @@ task('copy:html', () => {
 
 task('styles', () => {
     return src('src/styles/main.scss')
+        .pipe(gulpif(env === 'dev', sourcemaps.init()))
         .pipe(sassGlob())
         .pipe(sass().on('error', sass.logError))
         // .pipe(px2rem()) работает некорректно
-        .pipe(autoprefixer({
+        .pipe(
+            gulpif(env === 'prod', autoprefixer({
+                overrideBrowserslist: ['last 2 versions'],
+            cascade: false
+          }))
 //   Replace Autoprefixer browsers option to Browserslist config.
 //   Use browserslist key in package.json or .browserslistrc file.
 
@@ -45,12 +57,10 @@ task('styles', () => {
 //   Learn more at:
 //   https://github.com/browserslist/browserslist#readme
 //   https://twitter.com/browserslist
-            overrideBrowserslist: ['last 2 versions'],
-            cascade: false
-        }))
+      )
         // .pipe(gcmq())
-        .pipe(cleanCSS())
-        .pipe(sourcemaps.write())
+        .pipe(gulpif(env === 'prod', cleanCSS()))
+        .pipe(gulpif(env === 'dev', sourcemaps.write()))
         .pipe(dest('dist/css'))
         .pipe(reload({ stream: true }));
 });
@@ -92,11 +102,24 @@ task('server', () => {
     });
 });
 
-watch('./src/styles/**/*.scss', series('styles'));
-watch('./src/js/**/*.js', series('copy:js'));
-watch('./src/*.html', series('copy:html'));
+task('watch', ()=>{
+    watch('./src/styles/**/*.scss', series('styles'));
+    watch('./src/js/**/*.js', series('copy:js'));
+    watch('./src/*.html', series('copy:html'));
+})
 
-task('default', series('clean', parallel('copy:html', 'copy:img', 'copy:js', 'copy:content', 'styles'), 'server'));
+task('default', series('clean',
+    parallel('copy:html', 'copy:img', 'copy:js', 'copy:content', 'styles'),
+    parallel('watch', 'server'))
+);
+
+task('build',
+    series(
+        'clean',
+        parallel('copy:html', 'styles', 'copy:img', 'copy:js')
+    )
+)
+
 
 
 
